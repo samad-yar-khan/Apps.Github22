@@ -49,20 +49,20 @@ export async function fileCodeModal({
         let roomId;
         const pullRawData = await http.get(data.value);
         const pullData = pullRawData.content;
-        block.addSectionBlock({
-            text: { text: `${pullData}`, type: TextObjectType.MARKDOWN },
-        });
+        // block.addSectionBlock({
+        //     text: { text: `${pullData}`, type: TextObjectType.MARKDOWN },
+        // });
 
         // shows indentations in input blocks but not inn section block
-        // block.addInputBlock({
-        //     blockId: ModalsEnum.CODE_VIEW,
-        //     label: { text: ModalsEnum.CODE_VIEW_LABEL, type: TextObjectType.PLAINTEXT },
-        //     element: block.newPlainTextInputElement({
-        //         initialValue : `${pullData}`,
-        //         multiline:true,
-        //         actionId: ModalsEnum.CODE_INPUT,
-        //     })
-        // });
+        block.addInputBlock({
+            blockId: ModalsEnum.CODE_VIEW,
+            label: { text: ModalsEnum.CODE_VIEW_LABEL, type: TextObjectType.PLAINTEXT },
+            element: block.newPlainTextInputElement({
+                initialValue : `${pullData}`,
+                code:true,
+                actionId: ModalsEnum.CODE_INPUT,
+            })
+        });
     }
 
     block.addDividerBlock();
